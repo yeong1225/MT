@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>랜덤 단어 출력</title>
+  <style>
+   .container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.word {
+  font-size: 180px;
+  margin-bottom: 20px;
+  color: #333;
+  border: 2px solid #333;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:active {
+  background-color: #3e8e41;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="word"></div>
+    <button class="button" onclick="showRandomWord()">단어 보기</button>
+  </div>
+
+  <script>
+    var words = [
+      "국위선양", "가로수", "해파리", "오리너구리", "화약", "물안개", "하모니카", "구명보트", "고인돌", "참치샌드위치",
+      "코스모스", "배신", "가족", "검문소", "손톱", "공고문", "거북선", "각시탈", "하이네캔", "레슬링", "올빼미",
+      "게이트볼", "감독", "소독약", "횡단보도", "개기일식", "개나리", "개구리", "감옥", "엘프", "유자나무", "기린",
+      "간호사", "가지나물", "고추장", "제육덮밥", "얼음낚시", "사랑싸움", "검정색", "감옥", "열매", "할로윈", "으악새",
+      "난장판", "흰수염고래", "노끈", "네트워크", "골든벨", "곡괭이", "갑오징어", "벌침", "중국어", "고르곤졸라",
+      "프리스비", "백사자", "반성문", "벼슬", "피구", "과자", "홍길동전", "화이트데이", "허니문", "호랑나비",
+      "연말", "미역", "가오리", "돌직구", "장편소설", "공중변소", "여우비", "쥐약", "신사임당", "쇠고집", "돈다발",
+      "당근주스", "핸드크림", "해산물", "향수", "코인노래방", "싸움닭", "배낭여행", "하이라이스", "스타일", "집중력",
+      "충무김밥", "소화제", "수제비", "하프마라톤", "용의자", "해수면", "메주", "그림자", "교육자", "숙취",
+      "개회식", "말뚝", "스타벅스"
+    ];
+
+    var usedWords = [];
+
+    function showRandomWord() {
+      var wordContainer = document.querySelector('.word');
+      var remainingWords = words.filter(function(word) {
+        return !usedWords.includes(word);
+      });
+
+      if (remainingWords.length === 0) {
+        wordContainer.textContent = "더 이상 단어가 없습니다.";
+        return;
+      }
+
+      var randomIndex = Math.floor(Math.random() * remainingWords.length);
+      var randomWord = remainingWords[randomIndex];
+      wordContainer.textContent = randomWord;
+
+      usedWords.push(randomWord);
+    }
+  </script>
+</body>
+</html>
